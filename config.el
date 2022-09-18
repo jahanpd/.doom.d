@@ -76,7 +76,8 @@
 ;; they are implemented.
 ; :weight "semi-light" :weight "semi-light";
 
-(setq doom-theme 'gruvbox-dark-hard)
+;; (setq doom-theme 'gruvbox-dark-hard)
+(setq doom-theme 'doom-horizon)
 (setq doom-font (font-spec :family "Monofur Nerd Font Mono" :size 13 :weight 'normal)
       doom-variable-pitch-font (font-spec :family "Monofur Nerd Font" :size 13 :weight 'normal)
       doom-big-font (font-spec :family "Monofur Nerd Font Mono" :size 18))
