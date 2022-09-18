@@ -113,7 +113,13 @@
 
 (defun set-bib-files (depth)
   "Function to set bib files as library for citar"
-  (interactive "nHow many folders to move up before recursive search - 0 for this default-directory?")
+  (interactive "nHow many folders to move up before recursive search for *\.bib$- 0 for the default-directory?")
   (setq citar-bibliography (directory-files-recursively (mapconcat (lambda (x) (concat x "/")) (butlast (split-string default-directory "/") depth) "") "\.bib$" nil t nil))
   (message "New Library: %s" citar-bibliography)
 )
+
+;; keymaps to allow vim movements in insert mode with control
+(define-key evil-insert-state-map (kbd "C-h") 'evil-backward-char)
+(define-key evil-insert-state-map (kbd "C-j") 'evil-next-line)
+(define-key evil-insert-state-map (kbd "C-k") 'evil-previous-line)
+(define-key evil-insert-state-map (kbd "C-l") 'evil-forward-char)
