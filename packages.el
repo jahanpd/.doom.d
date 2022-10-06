@@ -10,10 +10,13 @@
 ;(package! some-package)
 
 ;; (package! flycheck-languagetool)
-(package! lsp-ltex)
 (package! pandoc-mode)
-(package! gruvbox-theme)
-(package! texfrag)
+(package! citar)
+(package! request)
+
+;; (package! org-caldav)
+(package! org-caldav
+ :recipe (:host github :repo "jackkamm/org-caldav"))
 
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:

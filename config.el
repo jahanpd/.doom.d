@@ -84,18 +84,13 @@
 
 (setq doom-font-increment 1)
 
-(use-package! lsp-ltex
-  :hook ((text-mode . (lambda ()
-                       (require 'lsp-ltex)
-                       (lsp)))
-        (markdown-mode . (lambda ()
-                       (require 'lsp-ltex)
-                       (lsp))))  ; or lsp-deferred
-  :init
-  (setq lsp-ltex-ls-path "~/.emacs/.cache/lsp/ltex-ls/lsp-ltex-latest")
-  (setq lsp-ltex-version "15.2.0")
-  )  ; make sure you have set this, see below
-(setq lsp-ltex-enabled t)
+
+(if (eq system-type 'darwin)
+  ; something for OS X if true
+  ; optional something if not
+(setq langtool-language-tool-jar "/opt/homebrew/opt/languagetool/libexec/languagetool-commandline.jar")
+)
+
 (add-hook 'markdown-mode-hook 'pandoc-mode)
 (add-hook 'markdown-mode-hook 'variable-pitch-mode)
 (setq markdown-header-scaling t)
@@ -110,6 +105,12 @@
 
 
 ;; create function to set bibliography libraries with citar based on project
+(use-package citar
+  :bind (("C-c b" . citar-insert-citation)
+         :map minibuffer-local-map
+         ("M-b" . citar-insert-preset)))
+
+(use-package request)
 
 (defun set-bib-files (depth)
   "Function to set bib files as library for citar"
@@ -123,3 +124,14 @@
 (define-key evil-insert-state-map (kbd "C-j") 'evil-next-line)
 (define-key evil-insert-state-map (kbd "C-k") 'evil-previous-line)
 (define-key evil-insert-state-map (kbd "C-l") 'evil-forward-char)
+
+
+;; org-caldav settings
+(setq org-caldav-url "http://calendar.jahan/radicale/jahan/")
+(setq org-caldav-calendar-id "82e79a76-4f8f-d616-a3ed-6e853c592435")
+(setq org-caldav-inbox "~/org/cal.org")
+(setq org-caldav-files '("~/org/agenda.org" "~/org/exercise.org"))
+
+(setq org-icalendar-include-todo 'all
+      org-caldav-sync-todo t)
+(setq org-icalendar-categories '(local-tags))
