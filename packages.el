@@ -9,11 +9,11 @@
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;(package! some-package)
 
-;; (package! flycheck-languagetool)
 (package! pandoc-mode)
 (package! citar)
 (package! request)
-
+(package! org-roam)
+(package! langtool)
 ;; (package! org-caldav)
 (package! org-caldav
  :recipe (:host github :repo "jackkamm/org-caldav"))
@@ -52,7 +52,7 @@
 
 ;; Doom's packages are pinned to a specific commit and updated from release to
 ;; release. The `unpin!' macro allows you to unpin single packages...
-;(unpin! pinned-package)
+;(unpin! pinned-packagee
 ;; ...or multiple packages
 ;(unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)

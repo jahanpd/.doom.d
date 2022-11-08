@@ -112,6 +112,7 @@
 
 (use-package request)
 
+
 (defun set-bib-files (depth)
   "Function to set bib files as library for citar"
   (interactive "nHow many folders to move up before recursive search for *\.bib$- 0 for the default-directory?")
@@ -124,7 +125,7 @@
 (define-key evil-insert-state-map (kbd "C-j") 'evil-next-line)
 (define-key evil-insert-state-map (kbd "C-k") 'evil-previous-line)
 (define-key evil-insert-state-map (kbd "C-l") 'evil-forward-char)
-
+(define-key evil-normal-state-map  (kbd "<SPC>l") 'evil-switch-to-windows-last-buffer)
 
 ;; org-caldav settings
 (setq org-caldav-url "http://calendar.jahan/radicale/jahan/")
@@ -135,3 +136,20 @@
 (setq org-icalendar-include-todo 'all
       org-caldav-sync-todo t)
 (setq org-icalendar-categories '(local-tags))
+(setq org-caldav-todo-percent-states
+      '((0 "TODO")
+       (1 "STARTED")
+       (100 "DONE")
+       (100 "PROJ"))
+)
+
+;; org roam settings
+(use-package org-roam
+  :custom
+  (setq org-roam-directory (file-truename "~/org-roam"))
+  :bind (("C-c n l" . org-roam-buffer-toggle)
+         ("C-c n f" . org-roam-node-find)
+         ("C-c n i" . org-roam-node-insert)
+         )
+  )
+(org-roam-db-autosync-mode)
